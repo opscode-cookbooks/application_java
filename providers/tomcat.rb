@@ -43,10 +43,8 @@ action :before_deploy do
     not_if "test -L #{node['tomcat']['context_dir']}/ROOT.xml"
   end
 
-  link "#{node['tomcat']['context_dir']}/#{new_resource.application.name}.xml" do
-    to "#{new_resource.application.path}/shared/#{new_resource.application.name}.xml"
-    notifies :restart, resources(:service => "tomcat")
-  end
+  link_context_file unless new_resource.context_template.nil?
+
 end
 
 action :before_migrate do
@@ -59,4 +57,13 @@ action :before_restart do
 end
 
 action :after_restart do
+end
+
+protected
+
+def link_context_file
+  link "#{node['tomcat']['context_dir']}/#{new_resource.application.name}.xml" do
+    to "#{new_resource.application.path}/shared/#{new_resource.application.name}.xml"
+    notifies :restart, resources(:service => "tomcat")
+  end
 end
