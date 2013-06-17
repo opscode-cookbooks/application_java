@@ -18,3 +18,5 @@
 #
 
 include Chef::Resource::ApplicationBase
+
+attribute :context_template, :kind_of => [String, NilClass], :default => nil
