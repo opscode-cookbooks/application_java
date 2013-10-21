@@ -20,4 +20,3 @@
 include ApplicationCookbook::ResourceBase
 
 attribute :context_template, :kind_of => [TrueClass, FalseClass], :default => true
-
