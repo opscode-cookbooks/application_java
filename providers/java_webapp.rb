@@ -26,7 +26,7 @@ action :before_deploy do
 
   create_hierarchy
 
-  create_context_file
+  create_context_file unless new_resource.context_template.nil?
 
 end
 
