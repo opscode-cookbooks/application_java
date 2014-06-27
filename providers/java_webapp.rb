@@ -45,7 +45,7 @@ end
 protected
 
 def create_hierarchy
-  %w{ releases shared/log shared/pids shared/system }.each do |dir|
+  %w{ log pids system }.each do |dir|
     directory "#{new_resource.path}/#{dir}" do
       owner new_resource.owner
       group new_resource.group
