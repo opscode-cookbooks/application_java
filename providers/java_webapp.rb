@@ -46,7 +46,7 @@ protected
 
 def create_hierarchy
   %w{ log pids system }.each do |dir|
-    directory "#{new_resource.path}/shared/#{dir}" do
+    directory "#{new_resource.path}/#{dir}" do
       owner new_resource.owner
       group new_resource.group
       mode '0755'
