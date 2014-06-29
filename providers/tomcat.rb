@@ -21,8 +21,6 @@ include Chef::DSL::IncludeRecipe
 
 action :before_compile do
 
-  include_recipe "tomcat"
-
   unless new_resource.restart_command
     new_resource.restart_command do
       run_context.resource_collection.find(:service => "tomcat#{node['tomcat']['base_version']}").run_action(:restart)
